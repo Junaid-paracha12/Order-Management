@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Late Delivery Risk Predictor</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main>
+<h1>Late Delivery Risk Predictor</h1>
+<p class="sub">E-commerce Order Management Hub: when a Shopify order arrives, predict whether it will be delivered late, before it ships.</p>
+
+<section class="card">
+<h2>Order details</h2>
+<div class="grid">
+<div><label for="mode">Shipping mode</label>
+<select id="mode"><option>Standard Class</option><option>Second Class</option><option>First Class</option><option>Same Day</option></select></div>
+<div><label for="when">Order placed (date and time)</label>
+<input type="datetime-local" id="when"></div>
+</div>
+</section>
+
+<section class="card" aria-live="polite">
+<h2>Prediction</h2>
+<div class="result">
+<div class="pct"><span id="pct">--</span><small>probability of late delivery</small></div>
+<div class="bar"><div class="track"><div class="fill" id="fill"></div><div class="mark" id="mark" title="alert threshold"></div></div>
+<div class="scale"><span>0 %</span><span id="thrlabel"></span><span>100 %</span></div></div>
+</div>
+<div class="verdict" id="verdict"></div>
+</section>
+
+<section class="card">
+<h2>Same order time, every shipping mode</h2>
+<table><thead><tr><th>Shipping mode</th><th>Predicted late probability</th><th>Decision</th></tr></thead><tbody id="rows"></tbody></table>
+</section>
+
+<section class="card">
+<h2>About the model</h2>
+<div class="facts" id="facts"></div>
+<p class="note" id="about"></p>
+</section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
